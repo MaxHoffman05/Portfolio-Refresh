@@ -1,0 +1,15 @@
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.top-row {
+  display: flex-row;
+  flex: 1;
+  flex-grow: 1;
+}

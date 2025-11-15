@@ -1,0 +1,43 @@
+﻿<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <a class="navbar-brand" href="/">Portfolio</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <NavLink href="/" Match="@NavLinkMatch.All">Home</NavLink>
+      </li>
+      <li class="nav-item">
+       <NavLink href="/resume" Match="@NavLinkMatch.All">Resume</NavLink>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                @foreach(Tuple<string, string> route in projectRoutes) {
+                    <li>
+                        <NavLink class="dropdown-item" href="@route.Item1">@route.Item2</NavLink>
+                    </li>
+                }
+            </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+@code {
+    private List<Tuple<string, string>> projectRoutes = new List<Tuple<string, string>>();
+    protected override void OnInitialized() {
+
+        //fetch from JSON routes?
+
+        //they will be stored as route text and route path tuples
+        projectRoutes.Add(new Tuple<string, string>("/project1", "Project 1"));
+        projectRoutes.Add(new Tuple<string, string>("/project2", "Project 2"));
+        projectRoutes.Add(new Tuple<string, string>("/project3", "Project 3"));
+        projectRoutes.Add(new Tuple<string, string>("/project4", "Project 4"));
+    }
+}
